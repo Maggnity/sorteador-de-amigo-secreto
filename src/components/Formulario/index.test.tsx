@@ -6,7 +6,11 @@ import Formulario from ".";
 
 test('Quando o input está vazio, novos participantes não podem ser adicionados', () => {
     
-    render(<Formulario />)
+    render(
+        <RecoilRoot>
+            <Formulario />
+        </RecoilRoot>
+    )
     
     // encontrar no DOM o input;
     const input = screen.getByPlaceholderText('Insira os nomes dos participantes')
@@ -49,4 +53,41 @@ test('adicionar um participante caso exista um nome preenchido', () => {
 
     // garantir que o input não tenh um valor
     expect(input).toHaveValue("")
+})
+
+test('Nomes duplicados não podem ser adicionados na lista!', () => {
+    render(
+        <RecoilRoot>
+            <Formulario />
+        </RecoilRoot>
+    )
+    // encontrar no DOM o input;
+    const input = screen.getByPlaceholderText('Insira os nomes dos participantes')
+
+    // encontrar o botão;
+    const botao = screen.getByRole('button')
+
+    // inserir um valor no input
+    fireEvent.change(input, {
+        target: {
+            value: 'Fernando'
+        }
+    })
+    
+    // clicar no botão submeter
+    fireEvent.click(botao)
+
+    // inserir um valor no input
+    fireEvent.change(input, {
+        target: {
+            value: 'Fernando'
+        }
+    })
+    
+    // clicar no botão submeter
+    fireEvent.click(botao)
+
+    const mensagemDeErro = screen.getByRole('alert');
+
+    expect(mensagemDeErro.textContent).toBe('Nomes duplicados não são permitidos!')
 })
