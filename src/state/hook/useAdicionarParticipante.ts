@@ -9,8 +9,11 @@ export const useAdicionarParticipante = () => {
     return (nomeDoParticipante: string) => {
         if(lista.includes(nomeDoParticipante)) {
             setErro('Nomes duplicados não são permitidos!');
-            return
+            setTimeout(() => {
+                setErro("");
+            }, 3000);
+            return;
         }
-        return setLista(listaAtual => [...listaAtual, nomeDoParticipante])
+        return setLista(listaAtual => [...listaAtual, nomeDoParticipante]);
     }
 }
