@@ -1,3 +1,5 @@
+import styles from './Formulario.module.scss';
+
 const Formulario = () => {
     return (
         <form>
