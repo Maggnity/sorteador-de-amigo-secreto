@@ -1,6 +1,6 @@
 # Testando componentes com React
 
-## Aula 1
+## Aula 1 - Bem começado, metade feito
 
 - Script que executa testes implementados:
   `npm test`
@@ -19,3 +19,13 @@ Padão de organização **Arrange, Act and Assert**
   - definimos valores
 - Afirmamos o que queremos
   - onde realizamos as expectativas
+
+## Aula 2 - Testando Comportamentos
+
+- Instalação de bibliotecas para gerir rotas e estados
+  - React Router DOM
+  - Recoil
+- Criação de hooks que encapsulam o acesso ao estado global de participantes
+- Utilização de useRef para interagir com o DOM e definir foco a um input
+- Execução de código assíncrono com setTimeout
+- Uso de temporizadores nos testes com Jest
