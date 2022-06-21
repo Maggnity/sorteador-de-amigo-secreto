@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import React, { useRef, useState } from 'react';
 import { useAdicionarParticipante } from '../../state/hook/useAdicionarParticipante';
 import { useMensagemDeErro } from '../../state/hook/useMensagemDeErro';
@@ -22,15 +23,20 @@ const Formulario = () => {
 
     return (
         <form onSubmit={adicionarParticipante}>
-            <input 
-                ref={inputRef}
-                value={nome}
-                onChange={evento => setNome(evento.target.value)}
-                type="text" 
-                placeholder="Insira os nomes dos participantes" 
-            />
-            <button disabled={!nome}>Adicionar</button>
-            {mensagemDeErro && <p role="alert">{mensagemDeErro}</p>}
+            <div className={styles.grupoInputBtn}>
+                <input 
+                    ref={inputRef}
+                    value={nome}
+                    onChange={evento => setNome(evento.target.value)}
+                    type="text" 
+                    placeholder="Insira os nomes dos participantes" 
+                />
+                <button disabled={!nome}>Adicionar</button>
+            </div>
+            {mensagemDeErro && <p className={classNames({
+                [styles.alert]: true,
+                [styles.erro]: true
+            })} role="alert">{mensagemDeErro}</p>}
         </form>
     )
 }

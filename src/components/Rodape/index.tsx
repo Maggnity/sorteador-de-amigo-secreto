@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import { useListaDeParticipantes } from "../../state/hook/useListaDeParticipantes"
+import { useListaDeParticipantes } from "../../state/hook/useListaDeParticipantes";
+import styles from "./Rodape.module.scss";
 
 export const Rodape = () => {
     
@@ -9,8 +10,9 @@ export const Rodape = () => {
         navegarPara('/sorteio');
     }
     return (
-        <footer>
+        <footer className={styles.rodapeConfiguracoes}>
             <button 
+                className={styles.botao}
                 disabled={participantes.length < 3} 
                 onClick={iniciar}
             >
